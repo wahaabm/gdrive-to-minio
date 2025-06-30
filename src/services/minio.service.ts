@@ -23,3 +23,14 @@ export const uploadToMinio = async (stream: any, filename: string) => {
   );
   return `${process.env.MINIO_ENDPOINT}/${process.env.MINIO_BUCKET}/${filename}`;
 };
+
+export const deleteFile = async (filename: string) => {
+  try {
+    console.log(`Attempting to delete file ${filename}`);
+    await minioClient.removeObject(process.env.MINIO_BUCKET!, filename);
+    console.log(`File ${filename} deleted successfully`);
+  } catch (error) {
+    console.error(`Error deleting file ${filename}:`, error);
+    throw error;
+  }
+};

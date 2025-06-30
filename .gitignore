@@ -1,6 +1,7 @@
 # dependencies (bun install)
 node_modules
 roadmap.md
+plan.md
 # output
 out
 dist
